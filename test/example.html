@@ -1,0 +1,52 @@
+<html>
+  <head>
+    <title>Component Test</title>
+    <link rel="stylesheet" href="../build/build.css">
+    <style>
+      body { font-family: sans-serif; }
+      table {
+        border-collapse: collapse;
+      }
+      table, th, td {
+        border: 1px solid #ccc;
+      }
+      th, td {
+        padding: 5px 10px;
+      }
+      .docs {
+        margin-bottom: 30px;
+      }
+      .example {
+        float: left;
+        margin-right: 30px;
+      }
+      #log {
+        font-family: monospace;
+        margin-top: 30px;
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <script src="../build/build.js"></script>
+      <div class="docs">
+        <h1>FamilyFound Todo Example</h1>
+      </div>
+      <hr/>
+      <div id="ang" ng-app="test">
+        <div ng-controller="Tester">
+          <h3>Todo</h3>
+          <div class="todo" data-todo="todo"></div>
+          <h3>Completed</h3>
+          <div class="todo todo1" data-todo="todo1"></div>
+          <h3>Not Mine</h3>
+          <div class="todo todo2" data-todo="todo2"></div>
+        </div>
+        <div id="log">
+        </div>
+      </div>
+      <script src="setup-e2e.js"></script>
+    </div>
+  </body>
+</html>

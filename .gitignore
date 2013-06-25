@@ -1,0 +1,7 @@
+components
+build
+node_modules
+*~
+*.swp
+.#*
+template.html

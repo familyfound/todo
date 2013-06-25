@@ -1,0 +1,67 @@
+
+.todo label.type {
+  margin-right: 20px;
+  font-style: italic;
+  color: black;
+}
+
+.todo label.watch,
+.todo label.type {
+  cursor: pointer;
+}
+
+.todo label.type span {
+  margin-left: 5px;
+}
+
+.todo label {
+  display: inline-block;
+}
+
+.todo.done label,
+.todo.done {
+  font-style: italic;
+  color: #aaa;
+}
+
+.todo .right-side {
+  float: right;
+}
+
+.todo {
+  padding: 5px 0 2px 10px;
+  border-radius: 5px;
+}
+
+.todo input[type="checkbox"] {
+  vertical-align: middle;
+  margin-top: -1px;
+}
+
+.todo span.title {
+  min-width: 300px;
+  display: inline-block;
+}
+
+.todo:hover {
+  background-color: #eee;
+}
+
+.todo button.delete {
+  visibility: hidden;
+  border: none;
+  background-color: transparent;
+  padding: 5px 10px;
+  line-height: 0px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.todo label.watch {
+  padding-right: 10px;
+}
+
+.todo:hover button.delete {
+  visibility: visible;
+}
+
