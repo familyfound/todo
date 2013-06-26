@@ -6,7 +6,7 @@ var angular = require('angularjs')
   , template = require('./template');
 
 angular.module('todo', ['ffapi'])
-  .directive('todo', function (ffapi, ffperson) {
+  .directive('todo', function (ffapi) {
     return {
       scope: {},
       replace: true,
@@ -16,8 +16,7 @@ angular.module('todo', ['ffapi'])
         var name = attrs.todo;
         scope.$parent.$watch(name, function(value) {
           if (value && scope.dashboard && !scope.person && !scope.todo) {
-            ffperson(value.person, function (err, person) {
-              if (err) return;
+            ffapi.relation(value.person, function (person) {
               scope.person = person;
               scope.$digest();
             });

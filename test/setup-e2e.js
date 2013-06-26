@@ -54,15 +54,13 @@ function Tester($scope) {
 }
 
 angular.module('test', ['todo'])
-  .factory('ffperson', function () {
-    return function (pid, next) {
+  .factory('ffapi', function () {
+    log.relation = function (pid, next) {
       log('person api', pid, next);
       setTimeout(function () {
         next(null, {display: {name: 'Edward'}});
       }, 1000);
-    }
-  })
-  .factory('ffapi', function () {
+    };
     return log;
   });
 
