@@ -1,9 +1,11 @@
 .todo(ng-class="{done: todo.done}")
   .right-side
+    span.view-person(ng-show='dashboard')
+      a(href='https://familysearch.org/tree/#view=ancestor&person={{todo.person}}') {{person.name || "View person"}}
     label.watch(ng-hide='todo.owned')
       span watch
       input.toggle(title='watch', type='checkbox', ng-model='todo.watching')
-    button.delete(ng-show='todo.owned') remove
+    span.delete(ng-show='todo.owned') remove
   label.type
     input.toggle(type='checkbox', ng-model='todo.done')
     span {{todo.type}}

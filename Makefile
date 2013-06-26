@@ -1,5 +1,8 @@
 
-build: components index.js todo.css template.js
+default: build
+	@:
+
+build: index.js todo.css template.js
 	@component build --dev
 
 template.js: template.html

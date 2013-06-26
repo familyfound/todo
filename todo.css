@@ -5,6 +5,15 @@
   color: black;
 }
 
+.todo .view-person {
+  margin-right: 30px;
+  font-weight: bold;
+}
+
+.todo .view-person a {
+  text-decoration: none;
+}
+
 .todo label.watch,
 .todo label.type {
   cursor: pointer;
@@ -47,13 +56,14 @@
   background-color: #eee;
 }
 
-.todo button.delete {
+.todo .delete {
   visibility: hidden;
   border: none;
   background-color: transparent;
-  padding: 5px 10px;
-  line-height: 0px;
-  display: inline-block;
+  padding: 0px 10px;
+  line-height: normal;
+  vertical-align: middle;
+  margin-top: -5px;
   cursor: pointer;
 }
 
@@ -61,7 +71,7 @@
   padding-right: 10px;
 }
 
-.todo:hover button.delete {
+.todo:hover .delete {
   visibility: visible;
 }
 

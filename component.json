@@ -5,9 +5,12 @@
   "version": "0.0.1",
   "keywords": [],
   "dependencies": {
-    "jabapyth/angularjs": "*"
+    "jabapyth/angularjs": "*",
+    "component/query": "*"
   },
-  "development": {},
+  "development": {
+    "familyfound/domlog": "*"
+  },
   "license": "MIT",
   "main": "index.js",
   "scripts": [

@@ -1,4 +1,5 @@
 var angular = require('angularjs')
+  , query = require('query')
 
   , template = require('./template');
 
@@ -8,7 +9,12 @@ angular.module('todo', [])
       console.log('stub: ffapi', name, options, next);
     };
   })
-  .directive('todo', function (ffApi) {
+  .factory('person', function () {
+    return function (id, next) {
+      console.log('stub: person', id, next);
+    }
+  })
+  .directive('todo', function (ffApi, person) {
     return {
       scope: {},
       replace: true,
@@ -17,6 +23,13 @@ angular.module('todo', [])
       link: function (scope, element, attrs) {
         var name = attrs.todo;
         scope.$parent.$watch(name, function(value) {
+          if (value && scope.dashboard && !scope.person && !scope.todo) {
+            person(value.person, function (err, person) {
+              if (err) return;
+              scope.person = person;
+              scope.$digest();
+            });
+          }
           scope.todo = value;
         });
         scope.$watch('todo', function(value) {
@@ -32,11 +45,12 @@ angular.module('todo', [])
           var url = value ? 'done' : 'undone';
           ffApi('todos/' + url, {id: scope.todo._id});
         });
-        element.find('button')[0].addEventListener('click', function () {
+        query('.delete', element[0]).addEventListener('click', function () {
           scope.$parent.removeTodo(scope.todo);
         });
+        scope.dashboard = !!attrs.dashboard;
       }
     };
-  })
+  });
 
 module.exports = false;

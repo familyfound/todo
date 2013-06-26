@@ -2,11 +2,10 @@
 var angular = require('angularjs')
   // , settings = require('settings')
   // , angularSettings = require('angular-settings')
+  , log = require('domlog')
   , boxes = require('todo');
 
-// angularSettings.factory('settings', settings.getSettings());
-
-
+log.init();
 
 function Tester($scope) {
   $scope.todo = {
@@ -39,21 +38,30 @@ function Tester($scope) {
     done: false,
     user: 'user.MRZSD'
   };
+  $scope.todo3 = {
+    _id: 'threeId',
+    title: "Give me some lovin",
+    type: 'Find Ancetors',
+    person: 'KWX-3E',
+    owned: true,
+    completed: false,
+    done: false,
+    user: 'user.MRZSD'
+  };
   $scope.removeTodo = function (todo) {
     log('removing todo', todo);
   };
 }
 
-var logdiv = document.getElementById('log');
-
-function log() {
-  var msg = arguments.length == 1 ? arguments[0] : [].slice.call(arguments);
-  var div = document.createElement('div');
-  div.innerHTML = JSON.stringify(msg);
-  logdiv.appendChild(div);
-}
-
 angular.module('test', ['todo'])
+  .factory('person', function () {
+    return function (pid, next) {
+      log('person api', pid, next);
+      setTimeout(function () {
+        next(null, {name: 'Edward'});
+      }, 1000);
+    }
+  })
   .factory('ffApi', function () {
     return log;
   });
