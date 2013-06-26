@@ -1,20 +1,12 @@
+
 var angular = require('angularjs')
   , query = require('query')
+  , ffapi = require('ffapi')
 
   , template = require('./template');
 
-angular.module('todo', [])
-  .factory('ffApi', function () {
-    return function (name, options, next) {
-      console.log('stub: ffapi', name, options, next);
-    };
-  })
-  .factory('person', function () {
-    return function (id, next) {
-      console.log('stub: person', id, next);
-    }
-  })
-  .directive('todo', function (ffApi, person) {
+angular.module('todo', ['ffapi'])
+  .directive('todo', function (ffapi, ffperson) {
     return {
       scope: {},
       replace: true,
@@ -24,7 +16,7 @@ angular.module('todo', [])
         var name = attrs.todo;
         scope.$parent.$watch(name, function(value) {
           if (value && scope.dashboard && !scope.person && !scope.todo) {
-            person(value.person, function (err, person) {
+            ffperson(value.person, function (err, person) {
               if (err) return;
               scope.person = person;
               scope.$digest();
@@ -38,12 +30,12 @@ angular.module('todo', [])
         scope.$watch('todo.watching', function (value, old) {
           if (value === old) return;
           var url = value ? 'watch' : 'unwatch';
-          ffApi('todos/' + url, {id: scope.todo._id});
+          ffapi('todos/' + url, {id: scope.todo._id});
         });
         scope.$watch('todo.done', function (value, old) {
           if (value === old) return;
           var url = value ? 'done' : 'undone';
-          ffApi('todos/' + url, {id: scope.todo._id});
+          ffapi('todos/' + url, {id: scope.todo._id});
         });
         query('.delete', element[0]).addEventListener('click', function () {
           scope.$parent.removeTodo(scope.todo);

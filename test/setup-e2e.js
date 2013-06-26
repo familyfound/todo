@@ -3,7 +3,7 @@ var angular = require('angularjs')
   // , settings = require('settings')
   // , angularSettings = require('angular-settings')
   , log = require('domlog')
-  , boxes = require('todo');
+  , todo = require('todo');
 
 log.init();
 
@@ -54,16 +54,15 @@ function Tester($scope) {
 }
 
 angular.module('test', ['todo'])
-  .factory('person', function () {
+  .factory('ffperson', function () {
     return function (pid, next) {
       log('person api', pid, next);
       setTimeout(function () {
-        next(null, {name: 'Edward'});
+        next(null, {display: {name: 'Edward'}});
       }, 1000);
     }
   })
-  .factory('ffApi', function () {
+  .factory('ffapi', function () {
     return log;
   });
-    
 

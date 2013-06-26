@@ -6,7 +6,8 @@
   "keywords": [],
   "dependencies": {
     "jabapyth/angularjs": "*",
-    "component/query": "*"
+    "component/query": "*",
+    "familyfound/ffapi": "*"
   },
   "development": {
     "familyfound/domlog": "*"
