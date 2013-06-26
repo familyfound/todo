@@ -58,7 +58,7 @@ angular.module('test', ['todo'])
     log.relation = function (pid, next) {
       log('person api', pid, next);
       setTimeout(function () {
-        next(null, {display: {name: 'Edward'}});
+        next({display: {name: 'Edward'}});
       }, 1000);
     };
     return log;
