@@ -16,9 +16,9 @@ angular.module('todo', ['ffapi'])
         var name = attrs.todo;
         scope.$parent.$watch(name, function(value) {
           if (value && scope.dashboard && !scope.person && !scope.todo) {
-            ffapi.relation(value.person, function (person) {
+            ffapi.relation(value.person, function (person, cached) {
               scope.person = person;
-              scope.$digest();
+              if (!cached) scope.$digest();
             });
           }
           scope.todo = value;

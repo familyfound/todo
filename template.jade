@@ -1,7 +1,7 @@
 .todo(ng-class="{done: todo.done}")
   .right-side
     span.view-person(ng-show='dashboard')
-      a(href='https://familysearch.org/tree/#view=ancestor&person={{todo.person}}') {{person.display.name || "View person"}}
+      a(target='_blank', href='https://familysearch.org/tree/#view=ancestor&person={{todo.person}}') {{person.display.name || "View person"}}
     label.watch(ng-hide='todo.owned')
       span watch
       input.toggle(title='watch', type='checkbox', ng-model='todo.watching')
